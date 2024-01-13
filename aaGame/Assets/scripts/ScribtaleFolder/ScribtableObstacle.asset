@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd59f37fd12041544a91b7b560e07ab5, type: 3}
+  m_Name: ScribtableObstacle
+  m_EditorClassIdentifier: 
+  ObtacleObject:
+  - {fileID: 4941837178075029858, guid: 44ffa084dba44b848bbe800486bd0013, type: 3}
+  - {fileID: 5885097045451091981, guid: 8409e6bb8203fdb45b9373ef585f1911, type: 3}
+  - {fileID: 8152497649814591688, guid: 6ce9fa507f5af244d9d09e20d3c07e58, type: 3}
+  - {fileID: 5493349339194171605, guid: 3797ad690698bce45bd241d67a687722, type: 3}
+  - {fileID: 897994111026537993, guid: b7ebbe5f4b6008a4397360844e40331c, type: 3}
+  - {fileID: 4286143174264670491, guid: 9df0a644c5db68648ab988796447d847, type: 3}
+  - {fileID: 238384457955620849, guid: 83e221726a13ff94c98830cbbd5d9315, type: 3}
+  - {fileID: 7437645983414434730, guid: 4f1cb8b74fb7ed844b33ca3c5e87fcaa, type: 3}
+  - {fileID: 6960200884012308621, guid: 403766becd326a3409789f6662b13ff2, type: 3}
+  - {fileID: 463611358451396228, guid: c028ca1c508804b41a98e29b576a8cea, type: 3}
+  - {fileID: 8117115616370351316, guid: 1ce205926c74e16459150b049b96dd0c, type: 3}
+  - {fileID: 2768566611544054557, guid: e5ac42d0265c3fb4eb1ade63960a24ea, type: 3}
+  - {fileID: 4218372829056242336, guid: ba132f04b5e57b84cb6ffbfbfb8321e6, type: 3}
+  - {fileID: 2378598097636917081, guid: 6188fdf3926b176478c2c7011b72118a, type: 3}
+  - {fileID: 5802954885773434218, guid: bfa6d91c26571264394c3a96f79c34be, type: 3}
+  arrowObj: {fileID: 8980315089294606977, guid: 2bc9f36ea8787354cae206dd1e1ae3db, type: 3}
+  arrows: 020000000300000004000000050000000600000007000000
