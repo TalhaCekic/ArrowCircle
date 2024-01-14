@@ -30,6 +30,9 @@ public class menuManager : MonoBehaviour
 
     public AudioSource buttonClick;
 
+    public GameObject soundGameObject;
+    public GameObject musicGameObject;
+
     private void Awake()
     {
         if (instance == null)
@@ -44,10 +47,9 @@ public class menuManager : MonoBehaviour
         isSoundActive = true;
         isMusicActive = true;
 
-        scoreMenu = PlayerPrefs.GetFloat(GameManager.instance.scoreS, GameManager.instance.maxScore);
+        scoreMenu = PlayerPrefs.GetFloat(score.instance.scoreS, score.instance.maxScore);
         scoreTextMenu.text = scoreMenu.ToString();
-
-
+        
         soundValue = PlayerPrefs.GetInt(sound, soundValue);
         musicValue= PlayerPrefs.GetInt(music, musicValue);
     }
@@ -59,9 +61,9 @@ public class menuManager : MonoBehaviour
 
     void Update()
     {
-        GameObject soundGameObject = GameObject.Find("sound");
+        soundGameObject = GameObject.Find("sound");
+        musicGameObject = GameObject.Find("music");
         Button soundButton = soundGameObject.GetComponent<Button>();
-        GameObject musicGameObject = GameObject.Find("music");
         Button musicButton = musicGameObject.GetComponent<Button>();
         if (soundValue == 1)
         {
@@ -99,6 +101,7 @@ public class menuManager : MonoBehaviour
             buttonClick.Play();
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1;
     }
 
     public void SoundButton()

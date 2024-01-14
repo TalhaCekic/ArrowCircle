@@ -133,11 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 552760725255688141, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
       propertyPath: m_Name
-      value: music
-      objectReference: {fileID: 0}
-    - target: {fileID: 552760725255688141, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: musics
       objectReference: {fileID: 0}
     - target: {fileID: 743242988516487179, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -177,38 +173,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 743242988516487179, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: BypassEffects
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: BypassReverbZones
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446361662941115627, guid: b7fe1311b54109c4998b27321a43335b, type: 3}
-      propertyPath: BypassListenerEffects
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1012,7 +976,6 @@ GameObject:
   - component: {fileID: 934302645}
   - component: {fileID: 934302646}
   - component: {fileID: 934302647}
-  - component: {fileID: 934302648}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -1061,6 +1024,8 @@ MonoBehaviour:
   isMusicActive: 0
   scoreTextMenu: {fileID: 420179608}
   buttonClick: {fileID: 934302647}
+  soundGameObject: {fileID: 0}
+  musicGameObject: {fileID: 0}
 --- !u!82 &934302647
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1157,36 +1122,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &934302648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934302644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f91f7ca43b7e14445a52d3c395694347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scribtableObstacle: {fileID: 11400000, guid: 41dd280a14f0e434d895063752ba3041, type: 2}
-  isFinished: 0
-  scoreS: score
-  scoreText: {fileID: 0}
-  scoreAddText: {fileID: 0}
-  score: 0
-  maxScore: 0
-  ScoreUp: 0
-  scoreAdd: 0
-  target1: {fileID: 0}
-  target2: {fileID: 0}
-  isSpawnArrow: 0
-  isNext: 0
-  isDead: 0
-  pauseButton: {fileID: 0}
-  pauseUI: {fileID: 0}
-  deadUI: {fileID: 0}
-  buttonClick: {fileID: 0}
 --- !u!1 &1070416792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,6 +1634,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823288987}
   m_CullTransparentMesh: 1
+--- !u!1 &2062111818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2062111820}
+  - component: {fileID: 2062111819}
+  m_Layer: 0
+  m_Name: score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2062111819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062111818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154f04367222a154b90bd15add0b8c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreS: score
+  Score: 0
+  maxScore: 0
+--- !u!4 &2062111820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062111818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 348.11502, y: 1213.4624, z: 14.621733}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2098115861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,3 +1765,4 @@ SceneRoots:
   - {fileID: 654279318}
   - {fileID: 934302645}
   - {fileID: 82448264}
+  - {fileID: 2062111820}

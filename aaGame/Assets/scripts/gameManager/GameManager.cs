@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     public string scoreS = "score";
     public TMP_Text scoreText;
     public TMP_Text scoreAddText;
-    public float score;
-    public float maxScore;
     public bool ScoreUp;
     public bool scoreAdd;
     public Transform target1;
@@ -46,7 +44,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Score();
-        scoreText.text = score.ToString();
+        scoreText.text = score.instance.Score.ToString();
 
         if (isDead)
         {
@@ -74,15 +72,10 @@ public class GameManager : MonoBehaviour
     {
         if (ScoreUp)
         {
-            score += 10;
+            score.instance.Score += 10;
             ScoreUp = false;
             scoreAdd = true;
-            if (maxScore < score)
-            {
-                maxScore = score;
-                PlayerPrefs.SetFloat(scoreS, maxScore);
-                PlayerPrefs.Save();
-            }
+        
         }
 
         if (scoreAdd)
