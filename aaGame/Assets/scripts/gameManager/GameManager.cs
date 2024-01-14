@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     public AudioSource buttonClick;
 
+    public float speedObj;
+
     void Start()
     {
         instance = this;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
         pauseUI.gameObject.SetActive(false);
         deadUI.gameObject.SetActive(false);
         scoreAddText.gameObject.SetActive(false);
+        speedObj = 1;
     }
 
     void Update()
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour
             score.instance.Score += 10;
             ScoreUp = false;
             scoreAdd = true;
-        
+            speedObj += 0.05f;
         }
 
         if (scoreAdd)

@@ -46,7 +46,7 @@ public class arrowSpawn : MonoBehaviour
             }
             else
             {
-                arrowCountText.color = Color.black;
+                arrowCountText.color = Color.white;
             }
         }
         else

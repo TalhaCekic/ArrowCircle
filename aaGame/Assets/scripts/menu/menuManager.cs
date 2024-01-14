@@ -44,19 +44,16 @@ public class menuManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        isSoundActive = true;
-        isMusicActive = true;
+    }
 
+    void Start()
+    {
         scoreMenu = PlayerPrefs.GetFloat(score.instance.scoreS, score.instance.maxScore);
         scoreTextMenu.text = scoreMenu.ToString();
         
         soundValue = PlayerPrefs.GetInt(sound, soundValue);
         musicValue= PlayerPrefs.GetInt(music, musicValue);
-    }
-
-    void Start()
-    {
-    
+        this.enabled = true;
     }
 
     void Update()
@@ -143,6 +140,8 @@ public class menuManager : MonoBehaviour
         }
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        score.instance.Score = 0;
+        GameManager.instance.speedObj = 0;
     }
 
     public void MainMenuButton()

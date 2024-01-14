@@ -2018,7 +2018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -314, y: 788}
+  m_AnchoredPosition: {x: -314, y: 717.12}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455309441
@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15e28a232dd37284dbb9e03cb2f9ed92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8dd5a6bdc17b8c049ae552e01ac0b37b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2544,8 +2544,6 @@ MonoBehaviour:
   scoreS: score
   scoreText: {fileID: 945299367}
   scoreAddText: {fileID: 1264006447}
-  score: 0
-  maxScore: 0
   ScoreUp: 0
   scoreAdd: 0
   target1: {fileID: 1332753658}
@@ -2557,6 +2555,7 @@ MonoBehaviour:
   pauseUI: {fileID: 1546187546}
   deadUI: {fileID: 214117238}
   buttonClick: {fileID: 1870375056}
+  speedObj: 0
 --- !u!82 &1870375056
 AudioSource:
   m_ObjectHideFlags: 0

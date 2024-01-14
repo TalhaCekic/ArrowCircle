@@ -27,7 +27,7 @@ public class thisRotationMove : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0, speedRotation * Time.deltaTime);
+        transform.Rotate(0, 0, GameManager.instance.speedObj*speedRotation * Time.deltaTime);
         transform.position = new Vector3(0, 2, 0);
         if (!value && !GameManager.instance.isFinished)
         {
