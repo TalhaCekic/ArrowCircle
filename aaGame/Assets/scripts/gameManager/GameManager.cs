@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text scoreAddText;
     public float score;
+    public float maxScore;
     public bool ScoreUp;
     public bool scoreAdd;
     public Transform target1;
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     public Button pauseButton;
     public GameObject pauseUI;
     public GameObject deadUI;
-    
+
     public AudioSource buttonClick;
 
     void Start()
@@ -40,7 +41,6 @@ public class GameManager : MonoBehaviour
         pauseUI.gameObject.SetActive(false);
         deadUI.gameObject.SetActive(false);
         scoreAddText.gameObject.SetActive(false);
-        
     }
 
     void Update()
@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         {
             Dead();
         }
+
+        isNexting();
     }
 
     //randomize aray sistemi
@@ -75,6 +77,12 @@ public class GameManager : MonoBehaviour
             score += 10;
             ScoreUp = false;
             scoreAdd = true;
+            if (maxScore < score)
+            {
+                maxScore = score;
+                PlayerPrefs.SetFloat(scoreS, maxScore);
+                PlayerPrefs.Save();
+            }
         }
 
         if (scoreAdd)
@@ -86,16 +94,33 @@ public class GameManager : MonoBehaviour
                 scoreAddText.gameObject.SetActive(false);
                 scoreAddText.gameObject.transform.DOMove(target1.position, 1);
                 scoreAdd = false;
-                PlayerPrefs.SetFloat(scoreS, score);
-                PlayerPrefs.Save();
             });
         }
     }
 
+    private void isNexting()
+    {
+        if (scoreAdd)
+        {
+             float targetSize = 0;
+             float duration = 1f;
+             Camera.main.DOOrthoSize(targetSize, duration);
+        }
+        else
+        {
+            float targetSize2 = 5;
+            float duration2 = 2f;
+            Camera.main.DOOrthoSize(targetSize2, duration2);
+        }
+    }
+    
     //menus:
     public void ResumeButton()
     {
-        buttonClick.Play();
+        if (menuManager.instance.isSoundActive)
+        {
+            buttonClick.Play();
+        }
         pauseButton.gameObject.SetActive(true);
         pauseUI.gameObject.SetActive(false);
         Time.timeScale = 1;
@@ -103,7 +128,10 @@ public class GameManager : MonoBehaviour
 
     public void PauseButton()
     {
-        buttonClick.Play();
+        if (menuManager.instance.isSoundActive)
+        {
+            buttonClick.Play();
+        }
         pauseButton.gameObject.SetActive(false);
         pauseUI.gameObject.SetActive(true);
         Time.timeScale = 0;
@@ -139,6 +167,7 @@ public class GameManager : MonoBehaviour
         {
             menuManager.instance.soundValue = 0;
         }
+
         PlayerPrefs.SetInt(menuManager.instance.sound, menuManager.instance.soundValue);
         PlayerPrefs.Save();
     }
@@ -155,6 +184,7 @@ public class GameManager : MonoBehaviour
         {
             menuManager.instance.musicValue = 0;
         }
+
         PlayerPrefs.SetInt(menuManager.instance.music, menuManager.instance.musicValue);
         PlayerPrefs.Save();
     }

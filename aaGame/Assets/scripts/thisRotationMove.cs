@@ -11,22 +11,35 @@ public class thisRotationMove : MonoBehaviour
     void Start()
     {
         instance = this;
+        
+        //random
+        int randomDirection = Random.Range(0, 2);
+        if (randomDirection == 1)
+        {
+            speedRotation -= 100.0f;
+        }
+        else
+        {
+            speedRotation += 100.0f;
+        }
+
     }
 
     void Update()
     {
         transform.Rotate(0, 0, speedRotation * Time.deltaTime);
+        transform.position = new Vector3(0, 2, 0);
         if (!value && !GameManager.instance.isFinished)
         {
-            transform.localScale = Vector3.Lerp(this.transform.localScale, new Vector3(2f, 2f, 2f), 2 * Time.deltaTime);
+            transform.localScale = Vector3.Lerp(this.transform.localScale, new Vector3(1.5f, 1.5f, 1.5f), 2 * Time.deltaTime);
             if (transform.localScale.magnitude >= 3)
             {
                 value = true;
             }
         }
-        else if( value && !GameManager.instance.isFinished)
+        else if(value && !GameManager.instance.isFinished)
         {
-            transform.localScale = Vector3.Lerp(this.transform.localScale, new Vector3(1.5f, 1.5f, 1.5f), 2 * Time.deltaTime);
+            transform.localScale = Vector3.Lerp(this.transform.localScale, new Vector3(1f, 1f, 1f), 2 * Time.deltaTime);
         }
 
         if (GameManager.instance.isFinished)
@@ -38,11 +51,6 @@ public class thisRotationMove : MonoBehaviour
                 Destroy(this.gameObject);
                 
             }
-            // if (transform.localScale.magnitude <= 0)
-            // {
-            //     GameManager.instance.isFinished = false;
-            //     Destroy(this.gameObject);
-            // }
         }
     }
 }

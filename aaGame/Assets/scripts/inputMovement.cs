@@ -32,13 +32,11 @@ public class inputMovement : MonoBehaviour
     private Transform mainCameraTransform;
 
     public GameObject consoleObj;
-    public TMP_Text console;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         consoleObj = GameObject.Find("console");
-        console = consoleObj.GetComponent<TMP_Text>();
         mainCameraTransform = Camera.main.transform;
     }
 
@@ -76,7 +74,6 @@ public class inputMovement : MonoBehaviour
         if (isGo)
         {
             rb.simulated = true;
-            console.text = "ittir";
             rb.AddForce(Vector2.up * speed * Time.deltaTime, ForceMode2D.Impulse);
         }
         else
@@ -102,9 +99,6 @@ public class inputMovement : MonoBehaviour
     {
         if (other.CompareTag("red"))
         {
-            // Scene activeScene = SceneManager.GetActiveScene();
-            //
-            // SceneManager.LoadScene(activeScene.name);
             GameManager.instance.isDead = true;
             mainCameraTransform.DOShakePosition(shakeDuration, shakeStrength);
             
@@ -113,7 +107,6 @@ public class inputMovement : MonoBehaviour
                 touchSound.Play();
             }
 
-            print("red");
         }
         else if (other.CompareTag("green"))
         {
@@ -121,13 +114,16 @@ public class inputMovement : MonoBehaviour
             {
                 touchSound.Play();
             }
+            this.transform.parent = other.gameObject.transform.parent;
+            Destroy(rb);
+            enabled = false;
+            
             RandomObstacle.instance.isNextObstacle = true;
             GameManager.instance.isFinished = true;
             GameManager.instance.ScoreUp = true;
             GameManager.instance.isSpawnArrow = true;
             GameManager.instance.isNext = true;
             isDestroyer = true;
-            print("yeşil");
         }
         else if (other.CompareTag("white"))
         {
@@ -140,7 +136,6 @@ public class inputMovement : MonoBehaviour
             Destroy(rb);
             enabled = false;
             mainCameraTransform.DOShakePosition(shakeDuration, shakeStrength);
-            print("white");
         }
         else
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -29,30 +30,31 @@ public class menuManager : MonoBehaviour
 
     public AudioSource buttonClick;
 
-    void Start()
+    private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(this);
-
-        print(PlayerPrefs.GetFloat(GameManager.instance.scoreS, GameManager.instance.score));
-        print(scoreMenu);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else if(instance !=this)
+        {
+            Destroy(this.gameObject);
+        }
         isSoundActive = true;
         isMusicActive = true;
-        if (GameManager.instance.score > scoreMenu)
-        {
-            scoreMenu = PlayerPrefs.GetFloat(GameManager.instance.scoreS, GameManager.instance.score);
-            PlayerPrefs.SetFloat(MenuScore,scoreMenu);
-            PlayerPrefs.Save();
-            scoreTextMenu.text = scoreMenu.ToString();
-        }
-        else
-        {
-            scoreTextMenu.text = scoreMenu.ToString();
-        }
+
+        scoreMenu = PlayerPrefs.GetFloat(GameManager.instance.scoreS, GameManager.instance.maxScore);
+        scoreTextMenu.text = scoreMenu.ToString();
 
 
-        PlayerPrefs.GetInt(sound, soundValue);
-        PlayerPrefs.GetInt(music, musicValue);
+        soundValue = PlayerPrefs.GetInt(sound, soundValue);
+        musicValue= PlayerPrefs.GetInt(music, musicValue);
+    }
+
+    void Start()
+    {
+    
     }
 
     void Update()
@@ -92,7 +94,10 @@ public class menuManager : MonoBehaviour
 
     public void PlayButton()
     {
-        buttonClick.Play();
+        if (isSoundActive)
+        {
+            buttonClick.Play();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -112,7 +117,10 @@ public class menuManager : MonoBehaviour
 
     public void MusicButton()
     {
-        buttonClick.Play();
+        if (isSoundActive)
+        {
+            buttonClick.Play();
+        }
         isMusicActive = !isMusicActive;
         if (isMusicActive)
         {
@@ -126,21 +134,30 @@ public class menuManager : MonoBehaviour
 
     public void RestartButton()
     {
-        buttonClick.Play();
+        if (isSoundActive)
+        {
+            buttonClick.Play();
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenuButton()
     {
-        buttonClick.Play();
+        if (isSoundActive)
+        {
+            buttonClick.Play();
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         Destroy(this);
     }
 
     public void QuitButton()
     {
-        buttonClick.Play();
+        if (isSoundActive)
+        {
+            buttonClick.Play();
+        }
         Application.Quit();
     }
 }

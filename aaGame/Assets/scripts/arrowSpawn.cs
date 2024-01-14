@@ -54,13 +54,12 @@ public class arrowSpawn : MonoBehaviour
             GameManager.instance.isDead = true;
         }
         
-        arrowCountText.text = selectedArrowCount.ToString();
+        arrowCountText.text = "x" + selectedArrowCount.ToString();
     }
 
     private void spawnAwwor()
     {
-        selectArrow = _scribtableObstacle.arrowObj;
-        //Instantiate(_scribtableObstacle.arrowObj);
+        selectArrow = _scribtableObstacle.arrowObj; 
         Instantiate(selectArrow);
         selectArrow.transform.position = new Vector3(0, -5,0);
         selectedArrowCount--;

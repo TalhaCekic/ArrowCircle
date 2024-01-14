@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,30 @@ public class musicManager : MonoBehaviour
     public AudioSource music;
     //public bool changeBool;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else if(instance !=this)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     void Start()
     {
-        instance = this;
-        DontDestroyOnLoad(this);
+        // if (instance == null)
+        // {
+        //     instance = this;
+        //     DontDestroyOnLoad(this);
+        // }
+        // else if(instance !=this)
+        // {
+        //     Destroy(this.gameObject);
+        // }
     }
 
     void Update()
