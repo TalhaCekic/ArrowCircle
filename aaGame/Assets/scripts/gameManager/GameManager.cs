@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         deadUI.gameObject.SetActive(false);
         scoreAddText.gameObject.SetActive(false);
         speedObj = 1;
+        score.instance.Score = 0;
     }
 
     void Update()
