@@ -6,6 +6,7 @@ using TMPro;
 
 public class inputMovement : MonoBehaviour
 {
+    public GameObject InterstitialAdExampleObj;
     private Rigidbody2D rb;
     public int speed;
     public bool isReady;
@@ -38,6 +39,7 @@ public class inputMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         consoleObj = GameObject.Find("console");
         mainCameraTransform = Camera.main.transform;
+        InterstitialAdExampleObj = GameObject.Find("ads");
     }
 
     void Update()
@@ -106,6 +108,7 @@ public class inputMovement : MonoBehaviour
             {
                 touchSound.Play();
             }
+            InterstitialAdExampleObj.GetComponent<InterstitialAdExample>().ShowAd();
 
         }
         else if (other.CompareTag("green"))
